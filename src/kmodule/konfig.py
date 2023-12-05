@@ -1,13 +1,13 @@
+from __future__ import annotations
 import sys
 import logging
 import yaml
 import json
 import kmodule.exceptions
-from typing import List
 
 
 class Config():
-    def __init__(self, filename: str, type: str='yaml', sensetive_attributes: List[str]=None) -> None:
+    def __init__(self, filename: str, type: str='yaml', sensetive_attributes: list[str]=None) -> None:
         self.sensetive_attributes = [] if sensetive_attributes is None else sensetive_attributes
         try:
             with open(filename, 'r') as f:
