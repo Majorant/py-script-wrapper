@@ -1,0 +1,2 @@
+class UnknownConfigType(Exception):
+    pass
