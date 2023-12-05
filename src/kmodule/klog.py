@@ -63,8 +63,8 @@ class Klog():
             file_handler.setFormatter(SensitiveFormatter(self.log_format, senesetive_filter=self.senesetive_filter))
             srteam_handler.setFormatter(SensitiveFormatter(self.log_format, senesetive_filter=self.senesetive_filter))
         else:
-            file_handler.setFormatter(self.log_format)
-            srteam_handler.setFormatter(self.log_format)
+            file_handler.setFormatter(logging.Formatter(self.log_format))
+            srteam_handler.setFormatter(logging.Formatter(self.log_format))
 
         # log to file always. Add stderr if enabled or debug-mode
         handlers = [file_handler,]
