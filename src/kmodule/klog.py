@@ -18,7 +18,7 @@ class SensitiveFormatter(logging.Formatter):
 
 
     @staticmethod
-    def _filter(st: str, regex :str|None = None):
+    def _filter(st: str, regex: str|None = None):
         return re.sub(regex, '*****', st)
 
     def format(self, record):
