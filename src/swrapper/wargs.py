@@ -1,7 +1,7 @@
 import argparse
 
 
-class Kargs(argparse.ArgumentParser):
+class Wargs(argparse.ArgumentParser):
     def add_defult_arguments(self, *args, **kwargs):
         """Set default arguments to parse:
 

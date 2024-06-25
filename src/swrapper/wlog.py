@@ -11,10 +11,10 @@ class SensitiveFormatter(logging.Formatter):
         find remove bot_token from log
         there is some interest example here: https://stackoverflow.com/questions/48380452/mask-out-sensitive-information-in-python-log
     """
-    def __init__(self, fmt: str | None = None, datefmt: str | None = None, style="%", validate: bool = True, *, defaults: Mapping[str] | None = None, senesetive_filter: str | None = None) -> None:
+    def __init__(self, fmt: str | None = None, datefmt: str | None = None, style="%", validate: bool = True, *, defaults: Mapping[str] | None = None, sensitive_filter: str | None = None) -> None:
         super().__init__(fmt, datefmt, style, validate, defaults=defaults)
         # no need to use default here really
-        self.senesetive_filter = senesetive_filter
+        self.sensitive_filter = sensitive_filter
 
 
     @staticmethod
@@ -23,17 +23,17 @@ class SensitiveFormatter(logging.Formatter):
 
     def format(self, record):
         original = logging.Formatter.format(self, record)
-        return self._filter(original, self.senesetive_filter)
+        return self._filter(original, self.sensitive_filter)
 
 
-class Klog():
+class Wlog():
     def __init__(self,
                  log_file: str='logfile',
                  log_level: str='info',
                  log_format: str | None = None,
                  stderr_output: bool = False,
                  sensetive_formatter: bool = False,
-                 senesetive_filter: str | None = None
+                 sensitive_filter: str | None = None
                  ) -> None:
         default_log_format = "%(filename)s[LINE:%(lineno)d]# %(levelname)-6s [%(asctime)s] %(funcName)s: %(message)s"
 
@@ -42,7 +42,7 @@ class Klog():
         self.log_format = default_log_format if log_format is None else log_format
         self.stderr_output = stderr_output
         self.sensetive_formatter = sensetive_formatter
-        self.senesetive_filter = senesetive_filter
+        self.sensitive_filter = sensitive_filter
 
     def set_logging(self):
         """Config log. When DEBUG mode enabled send messages to the log file and to the cli.
@@ -59,9 +59,9 @@ class Klog():
         file_handler.setLevel = self.log_level
         srteam_handler.setLevel = self.log_level
 
-        if self.sensetive_formatter and self.senesetive_filter is not None:
-            file_handler.setFormatter(SensitiveFormatter(self.log_format, senesetive_filter=self.senesetive_filter))
-            srteam_handler.setFormatter(SensitiveFormatter(self.log_format, senesetive_filter=self.senesetive_filter))
+        if self.sensetive_formatter and self.sensitive_filter is not None:
+            file_handler.setFormatter(SensitiveFormatter(self.log_format, sensitive_filter=self.sensitive_filter))
+            srteam_handler.setFormatter(SensitiveFormatter(self.log_format, sensitive_filter=self.sensitive_filter))
         else:
             file_handler.setFormatter(logging.Formatter(self.log_format))
             srteam_handler.setFormatter(logging.Formatter(self.log_format))

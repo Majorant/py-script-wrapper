@@ -3,7 +3,7 @@ import sys
 import logging
 import yaml
 import json
-import kmodule.exceptions
+import swrapper.exceptions
 
 
 class Config():
@@ -16,7 +16,7 @@ class Config():
                 elif type == 'json':
                     conf = json.load(f)
                 else:
-                    raise kmodule.exceptions.UnknownConfigType
+                    raise swrapper.exceptions.UnknownConfigType
 
             for name, value in conf.items():
                 self.__setattr__(name, value)
@@ -32,7 +32,7 @@ class Config():
         except json.decoder.JSONDecodeError as e:
             logging.error('Error json decode file. Check config file type')
             sys.exit(1)
-        except kmodule.exceptions.UnknownConfigType as e:
+        except swrapper.exceptions.UnknownConfigType as e:
             logging.exception('Unknown config type. Expected "json" or "yaml"')
             sys.exit(1)
 

@@ -1,5 +1,5 @@
 [project]
-name = "kmodule"
+name = "py-script-wrapper"
 dynamic = ["version"]
 dependencies = [
   "simplejson>=3.16.0",
@@ -10,7 +10,7 @@ authors = [
   { name="Majorant" },
 ]
 maintainers = [
-  {name = "Brett Cannon", email="Majorant@users.noreply.github.com"}
+  {name = "Majorant", email="Majorant@users.noreply.github.com"}
 ]
 description = "A simple wrapper for the py-scripts"
 readme = "README.md"
@@ -22,12 +22,12 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Majorant/kmodule"
-Issues = "https://github.com/Majorant/kmodule/issues"
+Homepage = "https://github.com/Majorant/py-script-wrapper"
+Issues = "https://github.com/Majorant/py-script-wrapper/issues"
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
-version = {attr = "kmodule.__version__"}
+version = {attr = "swrapper.__version__"}
