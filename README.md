@@ -55,7 +55,7 @@ pip install py-script-wrapper
 ## Usage example:
 
 ```python
-import wrapper
+import swrapper
 
 
 CONFIG = 'config.yaml'
