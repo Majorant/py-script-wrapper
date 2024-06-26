@@ -3,16 +3,21 @@
 ## Description
 
 The module allows you to adjust the frequency of the functions used:
+```
     - logging
     - argparse
     - load config from *.yaml or *.json
+```
 
 ### Wlog
-`Wlog.sensitive_filter` -- regxp. Filter which used to mask logging output.
-`Wlog.set_logging(self)` -- if logging level debug, set two handlers to save output to cli and to the file.
 
-### kargs
-`Wargs.add_defult_arguments` -- Set defaults arguments:
+`Wlog.sensitive_filter` - regxp. Filter which used to mask logging output.
+
+`Wlog.set_logging(self)` - if logging level debug, set two handlers to save output to cli and to the file.
+
+### Wargs
+
+`Wargs.add_defult_arguments` - Set defaults arguments:
 ```
   -c, --config    `config file`
   -d, --debug     `debug mode`
@@ -20,8 +25,10 @@ The module allows you to adjust the frequency of the functions used:
 ```
 
 ### Config
+
 Load config from *.yaml or *.json.
-`sensetive_attributes` -- set attributes names which will be masked in output.
+
+`sensetive_attributes` - set attributes names which will be masked in output.
 ```python
 # config.json
 # {"one": 123, "two": 234, "three": 345}
@@ -41,14 +48,14 @@ three = 345
 Still not published.
 
 ```shell
-pip install git+https://github.com/Majorant/swrapper
+pip install py-script-wrapper
 ```
 
 
 ## Usage example:
 
 ```python
-import swrapper
+import wrapper
 
 
 CONFIG = 'config.yaml'
